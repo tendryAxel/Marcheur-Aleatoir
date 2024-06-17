@@ -54,6 +54,7 @@ class CarteTest {
         var Marais = new Lieu(5,"Marais");
         var Sekolintsika = new Lieu(6,"Sekolintsika");
         var Nexta = new Lieu(7,"Nexta");
+        var Boulevard = new Lieu(8,"Boulevard");
 
         var carte = new Carte(new Marcheur(HEI));
 
@@ -62,10 +63,15 @@ class CarteTest {
         carte.addRue(new Rue(HEI, Pullman));
         carte.addRue(new Rue(HEI, Balancoire));
         carte.addRue(new Rue(Nexta, Pullman));
+        carte.addRue(new Rue(Balancoire, Pullman));
         carte.addRue(new Rue(ESTI, Balancoire));
+        carte.addRue(new Rue(Boulevard, ESTI));
+        carte.addRue(new Rue(Boulevard, Balancoire));
 
-        var rues = carte.marcherAleatoirementJusqua(ESTI.getId());
+        var lieux = carte.marcherAleatoirementJusqua(ESTI);
 
-        assertEquals(ESTI, rues.getLast());
+        lieux.forEach(System.out::println);
+        assertEquals(ESTI, lieux.getLast());
+        assertTrue(lieux.size() >= 3);
     }
 }

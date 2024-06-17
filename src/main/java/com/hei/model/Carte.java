@@ -1,9 +1,6 @@
 package com.hei.model;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Carte {
     private final Marcheur marcheur;
@@ -30,7 +27,14 @@ public class Carte {
         List<Rue> possibleChemin = this.rues.stream()
                 .filter(rue -> rue.estComposeDeLieu(idDuLieuDeDepart))
                 .toList();
-        return possibleChemin.get((int) (possibleChemin.toArray().length * Math.random()));
+        int minPassage = possibleChemin.stream()
+                .min(Comparator.comparing(Rue::getPassage))
+                .orElse(null)
+                .getPassage();
+        List<Rue> possibleCheminAvecPeuDePassage = possibleChemin.stream()
+                .filter(rue -> rue.getPassage() == minPassage)
+                .toList();
+        return possibleCheminAvecPeuDePassage.get((int) (possibleCheminAvecPeuDePassage.toArray().length * Math.random()));
     }
 
     public Lieu prendreRueAleatoir() {
@@ -38,9 +42,9 @@ public class Carte {
         return marcheur.getPosition();
     }
 
-    public List<Lieu> marcherAleatoirementJusqua(int idLieu) {
+    public List<Lieu> marcherAleatoirementJusqua(Lieu destination) {
         List<Lieu> lieuVisite = new ArrayList<>();
-        while (marcheur.getPosition().getId() != idLieu) {
+        while (marcheur.getPosition().getId() != destination.getId()) {
             lieuVisite.add(prendreRueAleatoir());
         }
         return lieuVisite;

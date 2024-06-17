@@ -7,22 +7,13 @@ import java.util.stream.Collectors;
 public class Trajet {
     private final List<Lieu> lieux;
 
-    public Trajet() {
-        this.lieux = new ArrayList<>();
-    }
-
     public Trajet(Lieu depart) {
         this.lieux = new ArrayList<>();
         addLieu(depart);
     }
 
-    public Trajet addLieu(Lieu lieu) {
+    public void addLieu(Lieu lieu) {
         this.lieux.add(lieu);
-        return this;
-    }
-
-    public List<Lieu> getLieux() {
-        return lieux;
     }
 
     public Lieu getArrive() {

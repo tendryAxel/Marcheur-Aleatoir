@@ -12,7 +12,7 @@ class CarteTest {
         var Pullman = new Lieu(2,"pullman");
         var Balancoire = new Lieu(3,"balancoire");
 
-        var carte = new Carte(new Marcheur());
+        var carte = new Carte(new Marcheur(HEI));
 
         assertDoesNotThrow(()->{
             carte.addRue(new Rue(HEI, Pullman));

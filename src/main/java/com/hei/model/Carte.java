@@ -5,18 +5,18 @@ import java.util.Set;
 
 public class Carte {
     private final Marcheur marcheur;
-    private final Set<Lieu> lieux;
+    private final Set<Rue> rues;
 
     public Carte(Marcheur marcheur) {
         this.marcheur = marcheur;
-        this.lieux = new HashSet<>();
+        this.rues = new HashSet<>();
     }
 
     public Marcheur getMarcheur() {
         return marcheur;
     }
 
-    public Set<Lieu> getLieux() {
-        return lieux;
+    public Set<Rue> getRues() {
+        return rues;
     }
 }

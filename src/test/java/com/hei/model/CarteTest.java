@@ -71,10 +71,10 @@ class CarteTest {
         carte.addRue(new Rue(Boulevard, ESTI));
         carte.addRue(new Rue(Boulevard, Balancoire));
 
-        var lieux = marcheur.marcherAleatoirementJusqua(ESTI);
+        var trajet = marcheur.marcherAleatoirementJusqua(ESTI);
 
-        lieux.forEach(System.out::println);
-        assertEquals(ESTI, lieux.getLast());
-        assertTrue(lieux.size() >= 3);
+        System.out.println(trajet);
+        assertEquals(ESTI, trajet.getArrive());
+        assertTrue(trajet.longueurDuTrajet() >= 3);
     }
 }

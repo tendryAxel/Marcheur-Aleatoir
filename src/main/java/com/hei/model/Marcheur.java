@@ -1,8 +1,5 @@
 package com.hei.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Marcheur {
     private Lieu position;
     private final Carte carte;
@@ -30,12 +27,11 @@ public class Marcheur {
         return position;
     }
 
-    public List<Lieu> marcherAleatoirementJusqua(Lieu destination) {
-        List<Lieu> lieuVisite = new ArrayList<>();
-        lieuVisite.add(position);
+    public Trajet marcherAleatoirementJusqua(Lieu destination) {
+        Trajet trajet = new Trajet(position);
         while (!position.equals(destination)) {
-            lieuVisite.add(prendreRueAleatoir());
+            trajet.addLieu(prendreRueAleatoir());
         }
-        return lieuVisite;
+        return trajet;
     }
 }

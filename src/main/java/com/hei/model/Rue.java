@@ -16,4 +16,15 @@ public class Rue {
     public Lieu getDeuxiemeLieu() {
         return deuxiemeLieu;
     }
+
+
+    public Lieu prendreRue(int idLieuDebut) {
+        if (premierLieu.getId() == idLieuDebut) {
+            return deuxiemeLieu;
+        } else if (deuxiemeLieu.getId() == idLieuDebut) {
+            return premierLieu;
+        } else {
+            throw new RuntimeException("Id lieu n'est pas dans cette rue");
+        }
+    }
 }

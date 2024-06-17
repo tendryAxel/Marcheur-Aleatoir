@@ -10,4 +10,8 @@ public class Marcheur {
     public Lieu getPosition() {
         return position;
     }
+
+    public void prendreRue(Rue rue) {
+        position = rue.prendreRue(position.getId());
+    }
 }

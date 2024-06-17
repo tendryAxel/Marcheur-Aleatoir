@@ -12,6 +12,7 @@ public class Marcheur {
     }
 
     public void prendreRue(Rue rue) {
+        rue.augmenterPassage();
         position = rue.prendreRue(position.getId());
     }
 }

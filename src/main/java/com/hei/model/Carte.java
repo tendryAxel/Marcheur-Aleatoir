@@ -19,4 +19,8 @@ public class Carte {
     public Set<Rue> getRues() {
         return rues;
     }
+
+    public void addRue(Rue rue) {
+        this.rues.add(rue);
+    }
 }

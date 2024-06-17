@@ -12,7 +12,8 @@ class CarteTest {
         var Pullman = new Lieu(2,"pullman");
         var Balancoire = new Lieu(3,"balancoire");
 
-        var carte = new Carte(new Marcheur(HEI));
+        var carte = new Carte();
+        var marcheur = new Marcheur(HEI, carte);
 
         assertDoesNotThrow(()->{
             carte.addRue(new Rue(HEI, Pullman));
@@ -22,7 +23,7 @@ class CarteTest {
     }
 
     @Test
-    void prendreRueAleatoir() {
+    void choisirRueAleatoirement() {
         var HEI = new Lieu(1,"hei");
         var Pullman = new Lieu(2,"pullman");
         var Balancoire = new Lieu(3,"balancoire");
@@ -31,7 +32,8 @@ class CarteTest {
         var Sekolintsika = new Lieu(6,"Sekolintsika");
         var Nexta = new Lieu(7,"Nexta");
 
-        var carte = new Carte(new Marcheur(HEI));
+        var carte = new Carte();
+        var marcheur = new Marcheur(HEI, carte);
 
         carte.addRue(new Rue(Marais, Sekolintsika));
         carte.addRue(new Rue(HEI, Sekolintsika));
@@ -41,7 +43,7 @@ class CarteTest {
         carte.addRue(new Rue(ESTI, Balancoire));
 
         for (int i = 0; i <10; i++) {
-            carte.prendreRueAleatoir();
+            marcheur.prendreRueAleatoir();
         }
     }
 
@@ -56,7 +58,8 @@ class CarteTest {
         var Nexta = new Lieu(7,"Nexta");
         var Boulevard = new Lieu(8,"Boulevard");
 
-        var carte = new Carte(new Marcheur(HEI));
+        var carte = new Carte();
+        var marcheur = new Marcheur(HEI, carte);
 
         carte.addRue(new Rue(Marais, Sekolintsika));
         carte.addRue(new Rue(HEI, Sekolintsika));
@@ -68,7 +71,7 @@ class CarteTest {
         carte.addRue(new Rue(Boulevard, ESTI));
         carte.addRue(new Rue(Boulevard, Balancoire));
 
-        var lieux = carte.marcherAleatoirementJusqua(ESTI);
+        var lieux = marcheur.marcherAleatoirementJusqua(ESTI);
 
         lieux.forEach(System.out::println);
         assertEquals(ESTI, lieux.getLast());

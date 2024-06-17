@@ -12,7 +12,8 @@ class MarcheurTest {
         var Pullman = new Lieu(2,"pullman");
         var Balancoire = new Lieu(3,"balancoire");
 
-        var carte = new Carte(new Marcheur(HEI));
+        var carte = new Carte();
+        var marcheur = new Marcheur(HEI, carte);
 
         var rue1 = new Rue(HEI, Pullman);
 
@@ -20,7 +21,7 @@ class MarcheurTest {
         carte.addRue(new Rue(Pullman, Balancoire));
         carte.addRue(new Rue(HEI, Balancoire));
 
-        carte.getMarcheur().prendreRue(rue1);
-        assertEquals(Pullman, carte.getMarcheur().getPosition());
+        marcheur.prendreRue(rue1);
+        assertEquals(Pullman, marcheur.getPosition());
     }
 }

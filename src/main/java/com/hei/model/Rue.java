@@ -1,5 +1,7 @@
 package com.hei.model;
 
+import java.util.Objects;
+
 public class Rue {
     private final Lieu premierLieu;
     private final Lieu deuxiemeLieu;
@@ -7,6 +9,19 @@ public class Rue {
     public Rue(Lieu premierLieu, Lieu deuxiemeLieu) {
         this.premierLieu = premierLieu;
         this.deuxiemeLieu = deuxiemeLieu;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rue rue = (Rue) o;
+        return Objects.equals(premierLieu, rue.premierLieu) && Objects.equals(deuxiemeLieu, rue.deuxiemeLieu);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(premierLieu, deuxiemeLieu);
     }
 
     public Lieu getPremierLieu() {
@@ -26,5 +41,9 @@ public class Rue {
         } else {
             throw new RuntimeException("Id lieu n'est pas dans cette rue");
         }
+    }
+
+    public boolean estComposeDeLieu(int id) {
+        return premierLieu.getId() == id || deuxiemeLieu.getId() == id;
     }
 }

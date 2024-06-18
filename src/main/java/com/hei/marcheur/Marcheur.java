@@ -5,6 +5,8 @@ import com.hei.carte.Lieu;
 import com.hei.carte.Rue;
 import com.hei.carte.Trajet;
 
+import java.util.List;
+
 public class Marcheur {
     private Lieu position;
     private final Carte carte;
@@ -23,12 +25,16 @@ public class Marcheur {
     }
 
     public void prendreRue(Rue rue) {
-        rue.augmenterPassage();
         position = rue.prendreRue(position.getId());
     }
 
+    public Rue choisirRueAleatoirement(Lieu lieuDeDepart) {
+        List<Rue> possibleChemin = carte.voirRueDisponible(lieuDeDepart);
+        return possibleChemin.get((int) (possibleChemin.toArray().length * Math.random()));
+    }
+
     public Lieu prendreRueAleatoir() {
-        prendreRue(carte.choisirRueAleatoirement(position));
+        prendreRue(choisirRueAleatoirement(position));
         return position;
     }
 

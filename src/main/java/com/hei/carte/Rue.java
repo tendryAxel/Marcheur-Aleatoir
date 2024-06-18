@@ -5,12 +5,10 @@ import java.util.Objects;
 public class Rue {
     private final Lieu premierLieu;
     private final Lieu deuxiemeLieu;
-    private int passage;
 
     public Rue(Lieu premierLieu, Lieu deuxiemeLieu) {
         this.premierLieu = premierLieu;
         this.deuxiemeLieu = deuxiemeLieu;
-        this.passage = 0;
     }
 
     @Override
@@ -45,16 +43,7 @@ public class Rue {
         }
     }
 
-    public boolean estComposeDeLieu(int id) {
+    boolean estComposeDeLieu(int id) {
         return premierLieu.getId() == id || deuxiemeLieu.getId() == id;
-    }
-
-    public int getPassage() {
-        return passage;
-    }
-
-    public int augmenterPassage() {
-        passage++;
-        return passage;
     }
 }

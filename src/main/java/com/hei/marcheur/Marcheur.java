@@ -1,4 +1,9 @@
-package com.hei.model;
+package com.hei.marcheur;
+
+import com.hei.carte.Carte;
+import com.hei.carte.Lieu;
+import com.hei.carte.Rue;
+import com.hei.carte.Trajet;
 
 public class Marcheur {
     private Lieu position;

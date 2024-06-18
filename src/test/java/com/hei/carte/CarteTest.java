@@ -1,5 +1,6 @@
-package com.hei.model;
+package com.hei.carte;
 
+import com.hei.marcheur.Marcheur;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

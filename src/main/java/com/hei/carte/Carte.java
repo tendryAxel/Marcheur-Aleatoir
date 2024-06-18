@@ -1,4 +1,4 @@
-package com.hei.model;
+package com.hei.carte;
 
 import java.util.Comparator;
 import java.util.HashSet;

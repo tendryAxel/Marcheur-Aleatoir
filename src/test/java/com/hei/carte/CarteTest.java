@@ -33,7 +33,7 @@ class CarteTest {
         var Nexta = new Lieu(7,"Nexta");
 
         var carte = new Carte();
-        var marcheur = new Marcheur(HEI, carte);
+        var marcheur = new Marcheur(HEI);
 
         carte.addRue(new Rue(Marais, Sekolintsika));
         carte.addRue(new Rue(HEI, Sekolintsika));
@@ -43,12 +43,13 @@ class CarteTest {
         carte.addRue(new Rue(ESTI, Balancoire));
 
         for (int i = 0; i <10; i++) {
-            marcheur.prendreRueAleatoir();
+            marcheur.prendreRueAleatoir(carte.voirRueDisponible(marcheur.getPosition()));
         }
     }
 
     @Test
     void marcherAleatoirementJusqua() {
+        // Creation de la carte
         var HEI = new Lieu(1,"hei");
         var Pullman = new Lieu(2,"pullman");
         var Balancoire = new Lieu(3,"balancoire");
@@ -59,7 +60,6 @@ class CarteTest {
         var Boulevard = new Lieu(8,"Boulevard");
 
         var carte = new Carte();
-        var marcheur = new Marcheur(HEI, carte);
 
         carte.addRue(new Rue(Marais, Sekolintsika));
         carte.addRue(new Rue(HEI, Sekolintsika));
@@ -71,8 +71,11 @@ class CarteTest {
         carte.addRue(new Rue(Boulevard, ESTI));
         carte.addRue(new Rue(Boulevard, Balancoire));
 
-        var trajet = marcheur.marcherAleatoirementJusqua(ESTI);
+        // Creation du marcheur
+        var marcheur = new Marcheur(HEI);
+        var trajet = marcheur.marcherAleatoirementJusqua(ESTI, carte);
 
+        // Test
         System.out.println(trajet);
         assertEquals(ESTI, trajet.getArrive());
         assertTrue(trajet.longueurDuTrajet() >= 3);

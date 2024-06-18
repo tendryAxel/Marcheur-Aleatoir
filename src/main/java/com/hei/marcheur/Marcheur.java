@@ -9,39 +9,32 @@ import java.util.List;
 
 public class Marcheur {
     private Lieu position;
-    private final Carte carte;
 
-    public Marcheur(Lieu position, Carte carte) {
+    public Marcheur(Lieu position) {
         this.position = position;
-        this.carte = carte;
     }
 
     public Lieu getPosition() {
         return position;
     }
 
-    public Carte getCarte() {
-        return carte;
-    }
-
     public void prendreRue(Rue rue) {
         position = rue.prendreRue(position.getId());
     }
 
-    public Rue choisirRueAleatoirement(Lieu lieuDeDepart) {
-        List<Rue> possibleChemin = carte.voirRueDisponible(lieuDeDepart);
+    public Rue choisirRueAleatoirement(List<Rue> possibleChemin) {
         return possibleChemin.get((int) (possibleChemin.toArray().length * Math.random()));
     }
 
-    public Lieu prendreRueAleatoir() {
-        prendreRue(choisirRueAleatoirement(position));
+    public Lieu prendreRueAleatoir(List<Rue> possibleChemin) {
+        prendreRue(choisirRueAleatoirement(possibleChemin));
         return position;
     }
 
-    public Trajet marcherAleatoirementJusqua(Lieu destination) {
+    public Trajet marcherAleatoirementJusqua(Lieu destination, Carte carte) {
         Trajet trajet = new Trajet(position);
         while (!position.equals(destination)) {
-            trajet.addLieu(prendreRueAleatoir());
+            trajet.addLieu(prendreRueAleatoir(carte.voirRueDisponible(position)));
         }
         return trajet;
     }

@@ -14,14 +14,13 @@ class MarcheurTest {
         var Balancoire = new Lieu(3,"balancoire");
 
         var carte = new Carte();
-        var marcheur = new Marcheur(HEI, carte);
 
         var rue1 = new Rue(HEI, Pullman);
-
         carte.addRue(rue1);
         carte.addRue(new Rue(Pullman, Balancoire));
         carte.addRue(new Rue(HEI, Balancoire));
 
+        var marcheur = new Marcheur(HEI);
         marcheur.prendreRue(rue1);
         assertEquals(Pullman, marcheur.getPosition());
     }
